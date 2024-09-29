@@ -21,22 +21,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_user;
 
-    @NotNull
     private String user_name;
 
-    @NotNull
     private String email;
 
-    @NotNull
     private String password;
 
-    @NotNull
+    private String phoneNumber;
+
     private String gender;
 
-    @NotNull
     private String nacionality;
 
-    @NotNull
+
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
