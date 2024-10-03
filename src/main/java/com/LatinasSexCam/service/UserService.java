@@ -1,8 +1,10 @@
 package com.LatinasSexCam.service;
 
+import com.LatinasSexCam.controller.response.TokenResponse;
 import com.LatinasSexCam.model.Role;
 import com.LatinasSexCam.model.User;
 import com.LatinasSexCam.model.UserStatus;
+import com.LatinasSexCam.model.request.LoginRequest;
 import com.LatinasSexCam.model.request.RegisterRequest;
 import com.LatinasSexCam.repository.RoleRepository;
 import com.LatinasSexCam.repository.UserRepository;
@@ -62,6 +64,13 @@ public class UserService {
             status = HttpStatus.CONFLICT;
         }
         return new ResponseEntity<>(responseMessage,status);
+    }
+
+    public TokenResponse loginUser(LoginRequest request, User user){
+        String token = tokenUtils.getTokenUser(user);
+        return TokenResponse.builder()
+                .token(token)
+                .build();
     }
 
 /*    public void sendRegistrationEmail(String to, String name) throws MessagingException {

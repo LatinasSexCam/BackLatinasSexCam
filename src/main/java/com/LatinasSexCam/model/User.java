@@ -33,6 +33,8 @@ public class User {
 
     private String nacionality;
 
+    private String profile_photo;
+
 
     @Enumerated(EnumType.STRING)
     private UserStatus status;

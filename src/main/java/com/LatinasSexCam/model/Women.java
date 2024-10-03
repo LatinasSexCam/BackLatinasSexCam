@@ -1,10 +1,21 @@
 package com.LatinasSexCam.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
+@Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Women")
 public class Women {
 
     @Id
@@ -28,7 +39,11 @@ public class Women {
     private int tattoos;
     @Enumerated(EnumType.STRING)
     private WomenStatus status;
-    private String photos;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "women", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Multimedia> mediaList = new ArrayList<>();
+
 
     @ManyToOne
     @JoinColumn(name = "fkid_user")

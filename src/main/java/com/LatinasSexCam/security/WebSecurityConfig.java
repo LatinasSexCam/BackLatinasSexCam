@@ -26,7 +26,10 @@ public class WebSecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/",
-                                "LatinasSexCam/user/register").permitAll()
+                                "LatinasSexCam/user/register",
+                                "LatinasSexCam/user/login",
+                                "LatinasSexCam/comments").permitAll()
+                        .requestMatchers("LatinasSexCam/newComment").authenticated()
                         .anyRequest().authenticated())
                 .sessionManagement(sessionM -> sessionM.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)

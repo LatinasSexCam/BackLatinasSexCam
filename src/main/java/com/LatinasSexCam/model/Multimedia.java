@@ -6,24 +6,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
 @Data
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "CategoryFilter")
-public class CategoryFilter {
+@Table(name = "Multimedia")
+public class Multimedia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCategoryFilter;
+    private Long idMedia;
 
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private MultimediaType mediaType;
 
-    @ManyToMany(mappedBy = "categoryFilters")
-    private Set<Women> women;
+    private String url;
+
+
+    @ManyToOne
+    @JoinColumn(name = "fk_id_women", nullable = false)
+    private Women women;
 
 }
-

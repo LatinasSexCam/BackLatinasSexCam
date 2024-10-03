@@ -1,5 +1,6 @@
 package com.LatinasSexCam.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,7 @@ public class Role {
     @NotNull
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "role")
     private Set<User> users;
 }
