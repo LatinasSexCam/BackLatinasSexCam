@@ -30,7 +30,7 @@ public class Comment {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "fk_user")
+    @JoinColumn(name = "fkid_user")
     private User user;
 
 }
