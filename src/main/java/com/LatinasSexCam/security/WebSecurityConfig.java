@@ -29,7 +29,9 @@ public class WebSecurityConfig {
                                 "LatinasSexCam/user/register",
                                 "LatinasSexCam/user/login",
                                 "LatinasSexCam/comments").permitAll()
-                        .requestMatchers("LatinasSexCam/newComment").authenticated()
+                        .requestMatchers("LatinasSexCam/newComment",
+                                "LatinasSexCam/editComment/{id}",
+                                "LatinasSexCam/deleteComment/{id}").authenticated()
                         .anyRequest().authenticated())
                 .sessionManagement(sessionM -> sessionM.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
