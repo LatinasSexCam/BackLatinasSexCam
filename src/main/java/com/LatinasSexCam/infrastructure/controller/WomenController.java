@@ -31,7 +31,8 @@ public class WomenController {
 
 
     @GetMapping("/filter")
-    public List<Women> filterWomenByCategories(@RequestParam List<String> categories) {
-        return womenService.getWomenByCategories(categories);
+    public ResponseEntity<List<WomensResponseDTO>> filterWomenByCategories(@RequestParam List<String> categories) {
+        List<WomensResponseDTO> womens = womenService.getWomenByCategories(categories);
+        return ResponseEntity.ok(womens);
     }
 }

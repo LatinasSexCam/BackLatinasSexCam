@@ -1,10 +1,8 @@
 package com.LatinasSexCam.infrastructure.controller;
 
 import com.LatinasSexCam.application.service.ServicesService;
-import com.LatinasSexCam.domain.model.Service;
-import com.LatinasSexCam.domain.model.Women;
+import com.LatinasSexCam.infrastructure.dto.response.WomensResponseDTO;
 import com.LatinasSexCam.infrastructure.entity.ServiceEntity;
-import com.LatinasSexCam.infrastructure.entity.WomenEntity;
 import com.LatinasSexCam.infrastructure.repository.ServiceJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +29,9 @@ public class ServiceController {
     }
 
     @GetMapping("/filterService")
-    public List<Women> filterWomenByServices(@RequestParam List<String> services){
+    public ResponseEntity<List<WomensResponseDTO>> filterWomenByServices(@RequestParam List<String> services){
         System.out.println("servicio recibido: " + services);
-        return servicesService.getServicesByWomen(services);
+        List<WomensResponseDTO> womens = servicesService.getServicesByWomen(services);
+        return ResponseEntity.ok(womens);
     }
-
 }
