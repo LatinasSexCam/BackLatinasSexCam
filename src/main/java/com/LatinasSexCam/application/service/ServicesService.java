@@ -13,6 +13,7 @@ public class ServicesService {
     private final WomenRepositoryPort womenRepositoryPort;
 
     public List<Women> getServicesByWomen(List<String> serviceTitle){
+        System.out.println("Fetching women with services: " + serviceTitle);
         return womenRepositoryPort.findByServices_TitleIn(serviceTitle);
     }
 

@@ -32,6 +32,7 @@ public class ServiceController {
 
     @GetMapping("/filterService")
     public List<Women> filterWomenByServices(@RequestParam List<String> services){
+        System.out.println("servicio recibido: " + services);
         return servicesService.getServicesByWomen(services);
     }
 
