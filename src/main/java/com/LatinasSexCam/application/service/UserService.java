@@ -33,7 +33,6 @@ public class UserService {
         HttpStatus status;
 
         try {
-            System.out.println("Buscando usuario con email: " + request.getEmail());
             User userExisting = userRepositoryPort.findByEmail(request.getEmail());
 
             if (userExisting == null) {

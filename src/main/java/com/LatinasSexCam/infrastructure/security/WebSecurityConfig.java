@@ -34,7 +34,8 @@ public class WebSecurityConfig {
                                 "LatinasSexCam/service/services",
                                 "LatinasSexCam/user/subServices/{serviceId}",
                                 "LatinasSexCam/women/filter",
-                                "LatinasSexCam/user/filters").permitAll()
+                                "LatinasSexCam/user/filters",
+                                "LatinasSexCam/service/service").permitAll()
                         .requestMatchers("LatinasSexCam/newComment",
                                 "LatinasSexCam/editComment/{id}",
                                 "LatinasSexCam/deleteComment/{id}").authenticated()

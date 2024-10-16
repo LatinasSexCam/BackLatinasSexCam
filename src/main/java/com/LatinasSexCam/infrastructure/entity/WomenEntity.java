@@ -26,6 +26,8 @@ public class WomenEntity {
     private String name;
     private String description;
     private int age;
+    private String photoProfile;
+    private String nationality;
     private double height;
     private double weight;
     private double hips;

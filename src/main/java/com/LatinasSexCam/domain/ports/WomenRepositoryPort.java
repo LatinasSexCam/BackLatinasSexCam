@@ -13,4 +13,8 @@ public interface WomenRepositoryPort {
     List<Women> findByCategoryNames(List<String> categoryNames);
 
     long countByCategoryFilters(Set<CategoryFilter> categoryFilters);
+
+    List<Women>findAll();
+
+    List<Women>findByServices_TitleIn(List<String> serviceTitle);
 }

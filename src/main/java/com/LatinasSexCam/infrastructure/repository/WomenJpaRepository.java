@@ -1,6 +1,7 @@
 package com.LatinasSexCam.infrastructure.repository;
 
 import com.LatinasSexCam.domain.model.CategoryFilter;
+import com.LatinasSexCam.domain.model.Women;
 import com.LatinasSexCam.infrastructure.entity.CategoryFilterEntity;
 import com.LatinasSexCam.infrastructure.entity.WomenEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +18,6 @@ public interface WomenJpaRepository extends JpaRepository<WomenEntity, Long> {
     List<WomenEntity> findByCategoryFilters_NameIn(List<String> categoryNames);
 
     long countByCategoryFilters(Set<CategoryFilterEntity> categoryFilters);
+
+    List<WomenEntity>findByServices_TitleIn(List<String> ServiceTitle);
 }

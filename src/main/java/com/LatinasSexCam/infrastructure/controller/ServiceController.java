@@ -1,14 +1,14 @@
 package com.LatinasSexCam.infrastructure.controller;
 
+import com.LatinasSexCam.application.service.ServicesService;
 import com.LatinasSexCam.domain.model.Service;
+import com.LatinasSexCam.domain.model.Women;
 import com.LatinasSexCam.infrastructure.entity.ServiceEntity;
+import com.LatinasSexCam.infrastructure.entity.WomenEntity;
 import com.LatinasSexCam.infrastructure.repository.ServiceJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +19,7 @@ import java.util.List;
 public class ServiceController {
 
     private final ServiceJpaRepository serviceJpaRepository;
+    private final ServicesService servicesService;
 
     @GetMapping("services")
     public ResponseEntity<List<ServiceEntity>> getServices() {
@@ -28,4 +29,10 @@ public class ServiceController {
         }
         return ResponseEntity.ok(services); // 200 OK
     }
+
+    @GetMapping("/service")
+    public List<Women> filterWomenByServices(@RequestParam List<String> services){
+        return servicesService.getServicesByWomen(services);
+    }
+
 }

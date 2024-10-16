@@ -35,14 +35,33 @@ public class WomenRepositoryAdapter implements WomenRepositoryPort {
     }
 
     @Override
+    public List<Women> findByServices_TitleIn(List<String> serviceTitle) {
+        List<WomenEntity> entities = womenJpaRepository.findByServices_TitleIn(serviceTitle);
+        return entities.stream()
+                .map(womenCategoryFilterMapper::toDomain)
+                .collect(Collectors.toList());
+    }
+
+
+    @Override
     public long countByCategoryFilters(Set<CategoryFilter> categoryFilters) {
-        // Convierte Set<CategoryFilter> a Set<CategoryFilterEntity>
         Set<CategoryFilterEntity> categoryFilterEntities = categoryFilters.stream()
-                .map(womenCategoryFilterMapper::toEntity)  // Aquí debes tener un método toEntity
+                .map(womenCategoryFilterMapper::toEntity)
                 .collect(Collectors.toSet());
 
         return womenJpaRepository.countByCategoryFilters(categoryFilterEntities);
     }
+
+    @Override
+    public List<Women> findAll() {
+        List<WomenEntity> womenEntities = womenJpaRepository.findAll();
+        return womenEntities.stream()
+                .map(womenCategoryFilterMapper::toDomain)
+                .collect(Collectors.toList());
+    }
+
+
+
 
     public Set<Women> toDomain(Set<WomenEntity> womenEntities) {
         return womenEntities.stream()
