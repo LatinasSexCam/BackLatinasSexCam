@@ -19,5 +19,5 @@ public interface WomenJpaRepository extends JpaRepository<WomenEntity, Long> {
 
     long countByCategoryFilters(Set<CategoryFilterEntity> categoryFilters);
 
-    List<WomenEntity>findByServices_TitleIn(List<String> ServiceTitle);
+    List<WomenEntity>findByServices_TitleIn(List<String> serviceTitle);
 }

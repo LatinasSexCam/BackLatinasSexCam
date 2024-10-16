@@ -30,7 +30,7 @@ public class ServiceController {
         return ResponseEntity.ok(services); // 200 OK
     }
 
-    @GetMapping("/service")
+    @GetMapping("/filterService")
     public List<Women> filterWomenByServices(@RequestParam List<String> services){
         return servicesService.getServicesByWomen(services);
     }
