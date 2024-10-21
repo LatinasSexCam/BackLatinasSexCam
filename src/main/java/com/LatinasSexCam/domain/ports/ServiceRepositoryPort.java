@@ -1,11 +1,12 @@
 package com.LatinasSexCam.domain.ports;
 
-import com.LatinasSexCam.domain.model.Service;
+import com.LatinasSexCam.domain.model.Services;
 
 import java.util.List;
 
 public interface ServiceRepositoryPort {
 
-    Service findById(long id);
-    List<Service> findAll();
+    Services findById(long id);
+    List<Services> findAllServices();
+    List<Services> findByIdServiceIn(List<Long> ids);
 }

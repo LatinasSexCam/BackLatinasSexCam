@@ -1,6 +1,7 @@
 package com.LatinasSexCam.infrastructure.entity;
 
 import com.LatinasSexCam.domain.model.WomenStatus;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -26,8 +28,6 @@ public class WomenEntity {
     private String name;
     private String description;
     private int age;
-    private String photoProfile;
-    private String nationality;
     private double height;
     private double weight;
     private double hips;
@@ -45,12 +45,17 @@ public class WomenEntity {
 
     @Builder.Default
     @OneToMany(mappedBy = "women", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<MultimediaEntity> mediaList = new ArrayList<>();
 
 
     @ManyToOne
     @JoinColumn(name = "fkid_user")
     private UserEntity user;
+
+    @ManyToOne
+    @JoinColumn(name = "fkid_package")
+    private PackageEntity packageS;
 
     @ManyToMany
     @JoinTable(
@@ -65,5 +70,16 @@ public class WomenEntity {
             joinColumns = @JoinColumn(name = "fkid_women"),
             inverseJoinColumns = @JoinColumn(name = "fkid_categoryfilter"))
     private Set<CategoryFilterEntity> categoryFilters;
+    @Override
+    public int hashCode() {
+        return Objects.hash(idWomen); // Usa solo el ID
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        WomenEntity that = (WomenEntity) obj;
+        return Objects.equals(idWomen, that.idWomen); // Compara solo IDs
+    }
 }

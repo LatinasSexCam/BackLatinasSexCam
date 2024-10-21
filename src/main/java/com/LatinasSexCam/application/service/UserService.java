@@ -8,14 +8,19 @@ import com.LatinasSexCam.domain.model.UserStatus;
 import com.LatinasSexCam.domain.ports.UserRepositoryPort;
 import com.LatinasSexCam.infrastructure.dto.request.LoginRequest;
 import com.LatinasSexCam.infrastructure.dto.request.RegisterRequest;
+import com.LatinasSexCam.infrastructure.dto.response.UserInfoResponseDTO;
 import com.LatinasSexCam.infrastructure.security.TokenUtils;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +33,7 @@ public class UserService {
 //    private final JavaMailSender javaMailSender;
 
 
-    public ResponseEntity<String> registerUser(@Validated RegisterRequest request) {
+    public ResponseEntity<String> registerUser(@Valid RegisterRequest request) {
         String responseMessage;
         HttpStatus status;
 
@@ -44,7 +49,7 @@ public class UserService {
                 }
 
                 User user = User.builder()
-                        .user_name(request.getUser_name())
+                        .userName(request.getUser_name())
                         .email(request.getEmail())
                         .password(passwordEncoder.encode(request.getPassword()))
                         .nationality(request.getNacionality())
@@ -128,4 +133,14 @@ public class UserService {
         javaMailSender.send(message);
 
     }*/
+
+    public UserInfoResponseDTO getUsers(LoginRequest email) {
+        User user = userRepositoryPort.findByEmail(email.getEmail());
+        if (user == null) {
+            return null;
+        }
+        return new UserInfoResponseDTO(user);
+    }
+
+
 }

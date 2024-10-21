@@ -24,7 +24,7 @@ public class CommentResponseDTO {
         this.comment = comment.getComment();
         this.stars = comment.getStars();
         this.createdAt = comment.getCreatedAt();
-        this.userName = (comment.getUser() != null) ? comment.getUser().getUser_name() : "Unknown";  // Manejo de nulos
+        this.userName = (comment.getUser() != null) ? comment.getUser().getUserName() : "Unknown";  // Manejo de nulos
     }
 
 }

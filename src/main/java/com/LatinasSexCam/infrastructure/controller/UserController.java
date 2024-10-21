@@ -1,8 +1,11 @@
 package com.LatinasSexCam.infrastructure.controller;
 
+import com.LatinasSexCam.application.service.SubServiceService;
+import com.LatinasSexCam.infrastructure.dto.response.SubServiceResponseDTO;
 import com.LatinasSexCam.infrastructure.dto.response.TokenResponse;
 import com.LatinasSexCam.infrastructure.dto.request.LoginRequest;
 import com.LatinasSexCam.infrastructure.dto.request.RegisterRequest;
+import com.LatinasSexCam.infrastructure.dto.response.UserInfoResponseDTO;
 import com.LatinasSexCam.infrastructure.entity.SubServiceEntity;
 import com.LatinasSexCam.infrastructure.repository.SubServiceJpaRepository;
 import com.LatinasSexCam.application.service.CategoryFilterService;
@@ -23,11 +26,11 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
-    private final SubServiceJpaRepository subServiceJpaRepository;
+    private final SubServiceService subServiceService;
     private final CategoryFilterService categoryFilterService;
 
     @PostMapping(value = "register")
-    public ResponseEntity<String> registerUser(@RequestBody RegisterRequest request) throws MessagingException{
+    public ResponseEntity<String> registerUser(@RequestBody RegisterRequest request){
         return userService.registerUser(request);
     }
 
@@ -42,8 +45,12 @@ public class UserController {
     }
 
     @GetMapping(value = "subServices/{serviceId}")
-    public List<SubServiceEntity> getSubServicesByServiceId(@PathVariable Long serviceId) {
-        return subServiceJpaRepository.findByService_IdService(serviceId);
+    public ResponseEntity<List<SubServiceResponseDTO>> getSubServicesByServiceId(@PathVariable Long serviceId) {
+        List<SubServiceResponseDTO> subServices = subServiceService.getSubServicesByServiceId(serviceId);
+        if (subServices.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(subServices);
     }
 
     @GetMapping("/filters")
@@ -51,4 +58,13 @@ public class UserController {
         return categoryFilterService.getAllFiltersWithCount();
     }
 
+    @GetMapping("/info")
+    public ResponseEntity<UserInfoResponseDTO> getInfoUser(@RequestBody LoginRequest email){
+        UserInfoResponseDTO users = userService.getUsers(email);
+        if (users == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(users);
+
+    }
 }

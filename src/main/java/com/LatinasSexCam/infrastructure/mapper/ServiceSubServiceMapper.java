@@ -1,6 +1,6 @@
 package com.LatinasSexCam.infrastructure.mapper;
 
-import com.LatinasSexCam.domain.model.Service;
+import com.LatinasSexCam.domain.model.Services;
 import com.LatinasSexCam.domain.model.SubService;
 import com.LatinasSexCam.infrastructure.entity.ServiceEntity;
 import com.LatinasSexCam.infrastructure.entity.SubServiceEntity;
@@ -13,18 +13,18 @@ import java.util.stream.Collectors;
 
 public class ServiceSubServiceMapper {
 
-    public Service toDomain(ServiceEntity entity) {
+    public Services toDomain(ServiceEntity entity) {
         if (entity == null) {
             return null;
         }
-        return Service.builder()
+        return Services.builder()
                 .idService(entity.getIdService())
                 .title(entity.getTitle())
                 .subServices(toDomain(entity.getSubServices()))
                 .build();
     }
 
-    public ServiceEntity toEntity(Service service) {
+    public ServiceEntity toEntity(Services service) {
         if (service == null) {
             return null;
         }
@@ -46,7 +46,7 @@ public class ServiceSubServiceMapper {
                 .price(entity.getPrice())
                 .time(entity.getTime())
                 .quantity(entity.getQuantity())
-                .service(toDomain(entity.getService()))
+/*                .service(toDomain(entity.getService()))*/
                 .build();
     }
 
@@ -60,7 +60,7 @@ public class ServiceSubServiceMapper {
                 .price(subService.getPrice())
                 .time(subService.getTime())
                 .quantity(subService.getQuantity())
-                .service(toEntity(subService.getService())) // Si necesitas incluir el Service aquí.
+/*                .service(toEntity(subService.getService()))*/ // Si necesitas incluir el Service aquí.
                 .build();
     }
 

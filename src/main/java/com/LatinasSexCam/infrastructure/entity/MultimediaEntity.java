@@ -1,6 +1,7 @@
 package com.LatinasSexCam.infrastructure.entity;
 
 import com.LatinasSexCam.domain.model.MultimediaType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,7 @@ public class MultimediaEntity {
 
     @ManyToOne
     @JoinColumn(name = "fkid_women", nullable = false)
+    @JsonBackReference
     private WomenEntity women;
 
 }

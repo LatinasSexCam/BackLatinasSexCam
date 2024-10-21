@@ -19,8 +19,6 @@ public class Women {
     private String name;
     private String description;
     private int age;
-    private String photoProfile;
-    private String nationality;
     private double height;
     private double weight;
     private double hips;
@@ -36,7 +34,8 @@ public class Women {
     private WomenStatus status;
     private List<Multimedia> mediaList;
     private User user;
-    private Set<Service> services;
+    private Set<Services> services;
     private Set<CategoryFilter> categoryFilters;
+    private Package packageS;
 
 }

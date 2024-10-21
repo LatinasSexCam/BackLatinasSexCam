@@ -2,9 +2,9 @@ package com.LatinasSexCam.infrastructure.mapper;
 
 import com.LatinasSexCam.domain.model.CategoryFilter;
 import com.LatinasSexCam.domain.model.Women;
-import com.LatinasSexCam.infrastructure.ServiceRepositoryAdapter;
-import com.LatinasSexCam.infrastructure.UserRepositoryAdapter;
-import com.LatinasSexCam.infrastructure.WomenRepositoryAdapter;
+import com.LatinasSexCam.infrastructure.adapters.PackageRepositoryAdapter;
+import com.LatinasSexCam.infrastructure.adapters.ServiceRepositoryAdapter;
+import com.LatinasSexCam.infrastructure.adapters.UserRepositoryAdapter;
 import com.LatinasSexCam.infrastructure.entity.CategoryFilterEntity;
 import com.LatinasSexCam.infrastructure.entity.WomenEntity;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +19,7 @@ public class WomenCategoryFilterMapper {
 
     private final ServiceRepositoryAdapter serviceRepositoryAdapter;
     private final UserRepositoryAdapter userRepositoryAdapter;
+    private final PackageRepositoryAdapter packageRepositoryAdapter;
 
     public Women toDomain(WomenEntity entity) {
         if (entity == null) {
@@ -28,7 +29,7 @@ public class WomenCategoryFilterMapper {
                 .idWomen(entity.getIdWomen())
                 .name(entity.getName())
                 .age(entity.getAge())
-                .nationality(entity.getNationality())
+                .description(entity.getDescription())
                 .height(entity.getHeight())
                 .weight(entity.getWeight())
                 .hips(entity.getHips())
@@ -44,6 +45,7 @@ public class WomenCategoryFilterMapper {
                 .categoryFilters(toDomain(entity.getCategoryFilters()))
                 .services(serviceRepositoryAdapter.toDomain(entity.getServices()))
                 .user(userRepositoryAdapter.toDomain(entity.getUser()))
+                .packageS(packageRepositoryAdapter.toDomain(entity.getPackageS()))
                 .build();
     }
 
@@ -55,7 +57,6 @@ public class WomenCategoryFilterMapper {
                 .idWomen(women.getIdWomen())
                 .name(women.getName())
                 .description(women.getDescription())
-                .nationality(women.getNationality())
                 .age(women.getAge())
                 .height(women.getHeight())
                 .weight(women.getWeight())
@@ -73,6 +74,7 @@ public class WomenCategoryFilterMapper {
                 .categoryFilters(toEntity(women.getCategoryFilters()))
                 .services(serviceRepositoryAdapter.toEntity(women.getServices()))
                 .user(userRepositoryAdapter.toEntity(women.getUser()))
+                .packageS(packageRepositoryAdapter.toEntity(women.getPackageS()))
                 .build();
     }
 

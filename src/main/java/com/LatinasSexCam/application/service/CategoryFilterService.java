@@ -2,7 +2,6 @@ package com.LatinasSexCam.application.service;
 
 import com.LatinasSexCam.domain.model.CategoryFilter;
 import com.LatinasSexCam.domain.ports.CategoryFilterRepositoryPort;
-import com.LatinasSexCam.infrastructure.CategoryFilterRepositoryAdapter;
 import com.LatinasSexCam.infrastructure.entity.CategoryFilterEntity;
 import com.LatinasSexCam.infrastructure.mapper.CategoryFilterMapper;
 import com.LatinasSexCam.infrastructure.repository.WomenJpaRepository;

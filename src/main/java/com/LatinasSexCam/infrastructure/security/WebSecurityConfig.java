@@ -3,6 +3,7 @@ package com.LatinasSexCam.infrastructure.security;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,7 +29,9 @@ public class WebSecurityConfig {
                         .requestMatchers("/",
                                 "LatinasSexCam/user/register",
                                 "LatinasSexCam/user/login",
+                                "LatinasSexCam/women/register",
                                 "LatinasSexCam/comments",
+                                "LatinasSexCam/packages",
                                 "LatinasSexCam/women/womens",
                                 "LatinasSexCam/women/count",
                                 "LatinasSexCam/service/services",
@@ -38,7 +41,11 @@ public class WebSecurityConfig {
                                 "LatinasSexCam/service/filterService").permitAll()
                         .requestMatchers("LatinasSexCam/newComment",
                                 "LatinasSexCam/editComment/{id}",
-                                "LatinasSexCam/deleteComment/{id}").authenticated()
+                                "LatinasSexCam/deleteComment/{id}",
+                                "LatinasSexCam/women/update",
+                                "LatinasSexCam/user/info",
+                                "LatinasSexCam/women/info").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "LatinasSexCam/admin/{id}").hasAuthority("admin")
                         .anyRequest().authenticated())
                 .sessionManagement(sessionM -> sessionM.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)

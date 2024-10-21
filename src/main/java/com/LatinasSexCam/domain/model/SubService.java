@@ -13,7 +13,7 @@ public class SubService {
     private double price;
     private String quantity;
     private String time;
-    private Service service;
+    private Services service;
 
 }
 

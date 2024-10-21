@@ -26,10 +26,10 @@ public class RegisterRequest {
     @Email
     private String email;
 
-    @Pattern(regexp = ".*[A-Z].*", message = "La contraseña debe contener al menos una letra mayúscula")
-    @Pattern(regexp = ".*[^a-zA-Z0-9].*", message = "La contraseña debe contener al menos un carácter especial")
-    @Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres")
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$",
+            message = "La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un carácter especial")
     private String password;
+
 
 
 

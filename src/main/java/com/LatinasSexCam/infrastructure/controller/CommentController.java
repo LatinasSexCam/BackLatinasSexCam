@@ -72,24 +72,23 @@ public class CommentController {
     public ResponseEntity<String> deleteComment(@PathVariable Long id, @RequestBody CommentRequest email) {
         String responseMessage;
         HttpStatus status;
-
         try {
             commentService.deleteCommentByUser(id, email);
-
             responseMessage = "Comentario eliminado con éxito";
             status = HttpStatus.OK;
-
         } catch (NoSuchElementException e) {
             responseMessage = e.getMessage();
             status = HttpStatus.NOT_FOUND;
-
         } catch (IllegalStateException e) {
             responseMessage = e.getMessage();
             status = HttpStatus.FORBIDDEN;
-
         }
-
         return new ResponseEntity<>(responseMessage, status);
+    }
+
+    @DeleteMapping("/admin/{id}")
+    public ResponseEntity<String> deleteCommentByAdmin(@PathVariable Long id){
+        return commentService.deleteCommentByAdmin(id);
     }
 
 

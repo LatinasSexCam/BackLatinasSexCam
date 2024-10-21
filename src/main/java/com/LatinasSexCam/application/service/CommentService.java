@@ -9,6 +9,8 @@ import com.LatinasSexCam.infrastructure.dto.request.CommentRequest;
 import com.LatinasSexCam.infrastructure.dto.response.CommentResponseDTO;
 import com.LatinasSexCam.infrastructure.repository.CommentJpaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -55,7 +57,7 @@ public class CommentService {
                 Comment existingComment = existingCommentOpt.get();
 
 
-                if (existingComment.getUser().getId_user() == userExist.getId_user()) {
+                if (existingComment.getUser().getIdUser() == userExist.getIdUser()) {
                     existingComment.setStars(request.getStars());
                     existingComment.setComment(request.getComment());
                     existingComment.setCreatedAt(LocalDateTime.now());
@@ -88,11 +90,21 @@ public class CommentService {
             throw new NoSuchElementException("Usuario no encontrado");
         }
 
-        if (existingComment.get().getUser().getId_user() != user.getId_user()) {
+        if (existingComment.get().getUser().getIdUser() != user.getIdUser()) {
             throw new IllegalStateException("No puedes eliminar este comentario");
         }
 
         commentRepositoryPort.delete(existingComment.get());
+    }
+
+    public ResponseEntity<String> deleteCommentByAdmin(Long commentId){
+        Optional<Comment> existingComment = commentRepositoryPort.findById(commentId);
+
+        if (existingComment.isPresent()){
+            commentRepositoryPort.delete(existingComment.get());
+            return new ResponseEntity<>("Comentario eliminado por un admin", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Comentario no encontrado", HttpStatus.NOT_FOUND);
     }
 
     public List<CommentResponseDTO> getAllComments() {

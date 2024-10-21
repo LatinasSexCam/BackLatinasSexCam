@@ -1,6 +1,7 @@
 package com.LatinasSexCam.infrastructure.controller;
 
 import com.LatinasSexCam.application.service.ServicesService;
+import com.LatinasSexCam.infrastructure.dto.response.ServicesResponseDTO;
 import com.LatinasSexCam.infrastructure.dto.response.WomensResponseDTO;
 import com.LatinasSexCam.infrastructure.entity.ServiceEntity;
 import com.LatinasSexCam.infrastructure.repository.ServiceJpaRepository;
@@ -15,13 +16,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class ServiceController {
-
-    private final ServiceJpaRepository serviceJpaRepository;
     private final ServicesService servicesService;
 
     @GetMapping("services")
-    public ResponseEntity<List<ServiceEntity>> getServices() {
-        List<ServiceEntity> services = serviceJpaRepository.findAll();
+    public ResponseEntity<List<ServicesResponseDTO>> getServices() {
+        List<ServicesResponseDTO> services = servicesService.getAllServices();
         if (services.isEmpty()) {
             return ResponseEntity.noContent().build(); // 204 No Content
         }
