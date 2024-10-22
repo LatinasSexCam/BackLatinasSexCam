@@ -15,15 +15,18 @@ public class AdminController {
     private final AdminService adminService;
 
     @PostMapping("register")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<String> registerWomenAdmin(@RequestBody RegisterWomenAdminRequest request){
         return adminService.registerWomenByAdmin(request);
     }
 
     @PostMapping("updateInfo")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<String> updateInfoWomenAdmin(@RequestBody RegisterWomenAdminRequest request){
         return adminService.updateInfoWomenAdmin(request);
     }
     @DeleteMapping("deleteWomen")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<String> deleteWomenAdmin(@RequestBody RegisterWomenAdminRequest username){
         return adminService.deleteWomen(username);
     }

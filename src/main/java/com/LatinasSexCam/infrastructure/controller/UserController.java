@@ -59,6 +59,7 @@ public class UserController {
     }
 
     @GetMapping("/info")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<UserInfoResponseDTO> getInfoUser(@RequestBody LoginRequest email){
         UserInfoResponseDTO users = userService.getUsers(email);
         if (users == null) {

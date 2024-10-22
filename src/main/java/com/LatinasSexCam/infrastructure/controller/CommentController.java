@@ -24,6 +24,7 @@ public class CommentController {
     private final CommentJpaRepository commentJpaRepository;
 
     @PostMapping(value = "newComment")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<String> saveComment(@RequestBody CommentRequest request) {
         Comment comment = commentService.saveComment(request);
         String responseMessage;
@@ -47,6 +48,7 @@ public class CommentController {
     }
 
     @PutMapping("/editComment/{id}")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<String> editComment(@PathVariable Long id, @RequestBody CommentRequest request) {
         String responseMessage;
         HttpStatus status;
@@ -69,6 +71,7 @@ public class CommentController {
         return new ResponseEntity<>(responseMessage, status);
     }
     @DeleteMapping("/deleteComment/{id}")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<String> deleteComment(@PathVariable Long id, @RequestBody CommentRequest email) {
         String responseMessage;
         HttpStatus status;
@@ -87,6 +90,7 @@ public class CommentController {
     }
 
     @DeleteMapping("/admin/{id}")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<String> deleteCommentByAdmin(@PathVariable Long id){
         return commentService.deleteCommentByAdmin(id);
     }

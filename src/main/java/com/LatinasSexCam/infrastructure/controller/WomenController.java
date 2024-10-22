@@ -31,6 +31,7 @@ public class WomenController {
     }
 
     @PostMapping("/update")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<String> updateWomenDetails(@Valid @RequestBody UpdateWomenRequest request) {
         return womenService.updateInfoWomen(request);
     }
@@ -52,6 +53,7 @@ public class WomenController {
     }
 
     @GetMapping("/info")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<WomenInfoResponseDTO> getInfoWomen(@RequestBody RegisterRequest userName){
         WomenInfoResponseDTO womens = womenService.getWomesInfo(userName);
         if (womens == null){
