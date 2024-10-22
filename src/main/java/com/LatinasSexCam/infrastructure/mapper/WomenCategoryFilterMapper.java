@@ -42,6 +42,7 @@ public class WomenCategoryFilterMapper {
                 .smoker(entity.getSmoker())
                 .piercings(entity.getPiercings())
                 .tattoos(entity.getTattoos())
+                .status(entity.getStatus())
                 .categoryFilters(toDomain(entity.getCategoryFilters()))
                 .services(serviceRepositoryAdapter.toDomain(entity.getServices()))
                 .user(userRepositoryAdapter.toDomain(entity.getUser()))
@@ -103,7 +104,6 @@ public class WomenCategoryFilterMapper {
         return CategoryFilter.builder()
                 .idCategoryFilter(entity.getIdCategoryFilter())
                 .name(entity.getName())
-                .women(toDomainWomen(entity.getWomen()))
                 .build();
     }
 

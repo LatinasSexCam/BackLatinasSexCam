@@ -45,7 +45,10 @@ public class WebSecurityConfig {
                                 "LatinasSexCam/women/update",
                                 "LatinasSexCam/user/info",
                                 "LatinasSexCam/women/info").authenticated()
-                        .requestMatchers(HttpMethod.DELETE, "LatinasSexCam/admin/{id}").hasAuthority("admin")
+                        .requestMatchers(HttpMethod.POST, "LatinasSexCam/admin/register",
+                                "LatinasSexCam/admin/updateInfo").hasAuthority("admin")
+                        .requestMatchers(HttpMethod.DELETE, "LatinasSexCam/admin/{id}",
+                                "LatinasSexCam/admin/deleteWomen").hasAuthority("admin")
                         .anyRequest().authenticated())
                 .sessionManagement(sessionM -> sessionM.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)

@@ -15,7 +15,7 @@ import java.util.Set;
 @Repository
 public interface WomenJpaRepository extends JpaRepository<WomenEntity, Long> {
 
-   WomenEntity findByUser_IdUser(Long idUser);
+   Optional<WomenEntity> findByUser_IdUser(Long idUser);
     Optional<WomenEntity> findByUser_UserName(String userName);
     List<WomenEntity> findByCategoryFilters_NameIn(List<String> categoryNames);
 

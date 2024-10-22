@@ -22,6 +22,13 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
     }
 
     @Override
+    public User findByUserName(String userName) {
+        return userJpaRepository.findByUserName(userName)
+                .map(this::toDomain)
+                .orElse(null);
+    }
+
+    @Override
     public User findById(long id) {
         return userJpaRepository.findById(id)
                 .map(this::toDomain)

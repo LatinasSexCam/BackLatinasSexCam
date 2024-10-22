@@ -87,13 +87,14 @@ public class WomenService {
                 return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
             }
             System.out.println("Buscando info de women con iduser " + user.getIdUser());
-            Women women = womenRepositoryPort.findByUser_IdUser(user.getIdUser());
+            Optional<Women> optionalWomen = womenRepositoryPort.findByUser_IdUser(user.getIdUser());
             List<Services> selectServices = serviceRepositoryPort.findByIdServiceIn(request.getSelectedServiceIds());
-            if (women == null) {
+            if (optionalWomen.isEmpty()) {
                 return new ResponseEntity<>("No se encontro infomración", HttpStatus.NOT_FOUND);
             }
+            Women women = optionalWomen.get();
 
-            System.out.println("Informacion actual de women: " + women);
+            System.out.println("Informacion actual de women: " + optionalWomen);
 
 
             women.setAge(request.getAge());

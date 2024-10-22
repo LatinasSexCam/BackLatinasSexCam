@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.LatinasSexCam.LatinasSexCamApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-10-21T21:59:40" hostname="LAPTOP-SMG642HP" time="0.508">
+<testsuite name="com.LatinasSexCam.LatinasSexCamApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-10-22T16:24:00" hostname="LAPTOP-SMG642HP" time="0.969">
   <properties/>
-  <testcase name="contextLoads()" classname="com.LatinasSexCam.LatinasSexCamApplicationTests" time="0.508"/>
-  <system-out><![CDATA[16:59:19.265 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.LatinasSexCam.LatinasSexCamApplicationTests]: LatinasSexCamApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-16:59:19.406 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.LatinasSexCam.LatinasSexCamApplication for test class com.LatinasSexCam.LatinasSexCamApplicationTests
+  <testcase name="contextLoads()" classname="com.LatinasSexCam.LatinasSexCamApplicationTests" time="0.969"/>
+  <system-out><![CDATA[11:23:33.759 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.LatinasSexCam.LatinasSexCamApplicationTests]: LatinasSexCamApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:23:34.035 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.LatinasSexCam.LatinasSexCamApplication for test class com.LatinasSexCam.LatinasSexCamApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -14,23 +14,23 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2024-10-21T16:59:19.963-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] c.L.LatinasSexCamApplicationTests        : Starting LatinasSexCamApplicationTests using Java 21.0.4 with PID 6280 (started by santi in C:\Users\santi\Escritorio\LatinasSexCam)
-2024-10-21T16:59:19.963-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] c.L.LatinasSexCamApplicationTests        : No active profile set, falling back to 1 default profile: "default"
-2024-10-21T16:59:20.916-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-21T16:59:21.025-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 105 ms. Found 9 JPA repository interfaces.
-2024-10-21T16:59:21.650-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-21T16:59:21.728-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-10-21T16:59:21.775-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-10-21T16:59:22.197-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-21T16:59:22.244-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-10-21T16:59:26.629-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@79c4f23b
-2024-10-21T16:59:26.641-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-10-21T16:59:27.247-05:00  WARN 6280 --- [LatinasSexCam] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-10-21T16:59:28.384-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-21T16:59:38.780-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-10-21T16:59:39.342-05:00  WARN 6280 --- [LatinasSexCam] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-10-21T16:59:39.389-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customDetailsService
-2024-10-21T16:59:40.147-05:00  INFO 6280 --- [LatinasSexCam] [    Test worker] c.L.LatinasSexCamApplicationTests        : Started LatinasSexCamApplicationTests in 20.506 seconds (process running for 21.918)
+2024-10-22T11:23:34.986-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] c.L.LatinasSexCamApplicationTests        : Starting LatinasSexCamApplicationTests using Java 21.0.4 with PID 9880 (started by santi in C:\Users\santi\Escritorio\LatinasSexCam)
+2024-10-22T11:23:34.988-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] c.L.LatinasSexCamApplicationTests        : No active profile set, falling back to 1 default profile: "default"
+2024-10-22T11:23:36.577-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-22T11:23:36.816-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 219 ms. Found 9 JPA repository interfaces.
+2024-10-22T11:23:37.987-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-22T11:23:38.186-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-22T11:23:38.308-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-22T11:23:39.172-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-22T11:23:39.254-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-22T11:23:44.116-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11cc9e1e
+2024-10-22T11:23:44.122-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-22T11:23:44.752-05:00  WARN 9880 --- [LatinasSexCam] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-22T11:23:47.500-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-22T11:23:57.933-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-22T11:23:59.136-05:00  WARN 9880 --- [LatinasSexCam] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-22T11:23:59.207-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customDetailsService
+2024-10-22T11:24:00.646-05:00  INFO 9880 --- [LatinasSexCam] [    Test worker] c.L.LatinasSexCamApplicationTests        : Started LatinasSexCamApplicationTests in 26.261 seconds (process running for 29.098)
 ]]></system-out>
   <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\santi\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.19\154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1\byte-buddy-agent-1.14.19.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning

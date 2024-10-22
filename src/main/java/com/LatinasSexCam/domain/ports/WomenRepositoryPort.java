@@ -9,7 +9,7 @@ import java.util.Set;
 
 public interface WomenRepositoryPort {
 
-    Women findByUser_IdUser(Long idUser);
+    Optional<Women> findByUser_IdUser(Long idUser);
 
     Optional<Women> findByUser_UserName(String userName);
 
@@ -23,4 +23,6 @@ public interface WomenRepositoryPort {
     List<Women>findByServices_TitleIn(List<String> serviceTitle);
 
     void save (Women women);
+
+    void delete(Women women);
 }

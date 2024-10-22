@@ -27,6 +27,14 @@ public class CategoryFilterRepositoryAdapter implements CategoryFilterRepository
     }
 
     @Override
+    public List<CategoryFilter> findByNameIn(List<String> names) {
+        List<CategoryFilterEntity> entities = categoryFilterRepository.findByNameIn(names);
+        return entities.stream()
+                .map(womenCategoryFilterMapper::toDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public Void save(CategoryFilter categoryFilter) {
         categoryFilterRepository.save(toEntity(categoryFilter));
         return null;

@@ -24,8 +24,9 @@ public class WomenRepositoryAdapter implements WomenRepositoryPort {
     private final WomenCategoryFilterMapper womenCategoryFilterMapper;
 
     @Override
-    public Women findByUser_IdUser(Long idUser) {
-        return womenCategoryFilterMapper.toDomain(womenJpaRepository.findByUser_IdUser(idUser));
+    public Optional<Women> findByUser_IdUser(Long idUser) {
+        return womenJpaRepository.findByUser_IdUser(idUser)
+                .map(womenCategoryFilterMapper::toDomain);
     }
 
     @Override
@@ -52,7 +53,13 @@ public class WomenRepositoryAdapter implements WomenRepositoryPort {
 
     @Override
     public void save(Women women) {
-        womenJpaRepository.save(womenCategoryFilterMapper.toEntity(women));
+        WomenEntity entity = womenCategoryFilterMapper.toEntity(women);
+        womenJpaRepository.save(entity);
+    }
+
+    @Override
+    public void delete(Women women) {
+        womenJpaRepository.delete(womenCategoryFilterMapper.toEntity(women));
     }
 
 

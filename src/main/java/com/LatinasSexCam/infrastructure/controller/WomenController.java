@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("LatinasSexCam/women")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173/")
+@CrossOrigin(origins = "*")
 public class WomenController {
 
     private final WomenJpaRepository womenJpaRepository;

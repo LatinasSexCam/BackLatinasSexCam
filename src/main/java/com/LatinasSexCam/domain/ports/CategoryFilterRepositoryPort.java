@@ -7,5 +7,7 @@ import java.util.List;
 public interface CategoryFilterRepositoryPort {
 
     List<CategoryFilter> findAll();
+
+    List<CategoryFilter> findByNameIn(List<String> names);
     Void save(CategoryFilter categoryFilter);
 }

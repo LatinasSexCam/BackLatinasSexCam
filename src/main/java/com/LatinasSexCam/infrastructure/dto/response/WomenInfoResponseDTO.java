@@ -1,7 +1,13 @@
 package com.LatinasSexCam.infrastructure.dto.response;
 
+import com.LatinasSexCam.domain.model.CategoryFilter;
+import com.LatinasSexCam.domain.model.Services;
 import com.LatinasSexCam.domain.model.Women;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -28,6 +34,9 @@ public class WomenInfoResponseDTO {
     private String smoker;
     private int piercings;
     private int tattoos;
+    private List<ServicesResponseDTO> services;
+    private List<CategoryFilter> categoryFilters;
+
 
     public WomenInfoResponseDTO(Women women){
         this.name = women.getName();
@@ -48,5 +57,7 @@ public class WomenInfoResponseDTO {
         this.smoker = women.getSmoker();
         this.piercings = women.getPiercings();
         this.tattoos = women.getTattoos();
+        this.services = women.getServices().stream().map(ServicesResponseDTO::new).collect(Collectors.toList());
+        this.categoryFilters = new ArrayList<>(women.getCategoryFilters());
     }
 }
