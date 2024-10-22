@@ -1,5 +1,8 @@
 package com.LatinasSexCam.infrastructure.controller;
 
+import com.LatinasSexCam.application.service.PackageService;
+import com.LatinasSexCam.domain.model.Package;
+import com.LatinasSexCam.domain.ports.PackageRepositoryPort;
 import com.LatinasSexCam.infrastructure.entity.PackageEntity;
 import com.LatinasSexCam.infrastructure.repository.PackageJpaRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,14 +19,15 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class PackageController {
-    private final PackageJpaRepository packageJpaRepository;
+    private final PackageService packageService;
 
     @GetMapping("packages")
-    public ResponseEntity<List<PackageEntity>>getPackages(){
-        List<PackageEntity> packageEntities = packageJpaRepository.findAll();
+    public ResponseEntity<List<Package>>getPackages(){
+        List<Package> packageEntities = packageService.getAllPackages();
         if (packageEntities.isEmpty()){
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(packageEntities);
     }
 }
+
