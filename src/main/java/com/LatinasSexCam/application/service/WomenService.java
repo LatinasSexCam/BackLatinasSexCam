@@ -29,6 +29,8 @@ public class WomenService {
     private final UserRepositoryPort userRepositoryPort;
     private final PackageRepositoryPort packageRepositoryPort;
     private final ServiceRepositoryPort serviceRepositoryPort;
+    private final CategoryFilterRepositoryPort categoryFilterRepositoryPort;
+    private final MultimediaRepositoryPort multimediaRepositoryPort;
 
     public ResponseEntity<String> registerWomen(@Valid RegisterWomenRequest request) {
         String responseMessage;
@@ -80,22 +82,17 @@ public class WomenService {
 
     public ResponseEntity<String> updateInfoWomen(UpdateWomenRequest request) {
         try {
-
-            System.out.println("Se inicia actualizacion de women con el email: " + request.getEmail());
             User user = userRepositoryPort.findByEmail(request.getEmail());
             if (user == null) {
                 return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
             }
-            System.out.println("Buscando info de women con iduser " + user.getIdUser());
             Optional<Women> optionalWomen = womenRepositoryPort.findByUser_IdUser(user.getIdUser());
             List<Services> selectServices = serviceRepositoryPort.findByIdServiceIn(request.getSelectedServiceIds());
+            List<CategoryFilter> selectedFilter = categoryFilterRepositoryPort.findByNameIn(request.getSelectedFilterNames());
             if (optionalWomen.isEmpty()) {
                 return new ResponseEntity<>("No se encontro infomración", HttpStatus.NOT_FOUND);
             }
             Women women = optionalWomen.get();
-
-            System.out.println("Informacion actual de women: " + optionalWomen);
-
 
             women.setAge(request.getAge());
             women.setColorEyes(request.getColorEyes());
@@ -113,8 +110,12 @@ public class WomenService {
             women.setWeight(request.getWeight());
             women.setServices(new HashSet<>(selectServices));
             women.setStatus(WomenStatus.WAITING);
-
+            women.setCategoryFilters(new HashSet<>(selectedFilter));
+            user.setProfilePhoto(request.getPhotoProfile());
+            System.out.println("subiendo foto de perfil...");
+            userRepositoryPort.save(user);
             womenRepositoryPort.save(women);
+            System.out.println("foto de perfil actualizada " + request.getPhotoProfile());
             System.out.println("Datos actualizados");
 
 
@@ -143,11 +144,11 @@ public class WomenService {
     public WomenInfoResponseDTO getWomesInfo(RegisterRequest userName) {
         System.out.println("Buscando a " + userName);
         Optional<Women> womenOpt = womenRepositoryPort.findByUser_UserName(userName.getUser_name());
-
         if (womenOpt.isEmpty()) {
             return null;
         }
-        return new WomenInfoResponseDTO(womenOpt.get());
+        Women women = womenOpt.get();
+        return new WomenInfoResponseDTO(women);
     }
 
 

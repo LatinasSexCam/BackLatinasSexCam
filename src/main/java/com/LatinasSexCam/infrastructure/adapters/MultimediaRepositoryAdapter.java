@@ -1,4 +1,3 @@
-/*
 package com.LatinasSexCam.infrastructure.adapters;
 
 import com.LatinasSexCam.domain.model.Multimedia;
@@ -10,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
@@ -21,15 +22,24 @@ public class MultimediaRepositoryAdapter implements MultimediaRepositoryPort {
     public void save(Multimedia multimedia) {
         multimediaJpaRepository.save(toEntity(multimedia));
     }
+
     @Override
-    public List<Multimedia> findByWomenId(Long womenId) {
-        List<MultimediaEntity> entities = multimediaJpaRepository.findByWomenId(womenId);
+    public List<Multimedia> findByWomen_User_UserName(String userName) {
+        List<MultimediaEntity> entities = multimediaJpaRepository.findByWomen_User_UserName(userName);
         return entities.stream()
                 .map(this::toDomain)
                 .collect(Collectors.toList());
     }
 
-    private Multimedia toDomain(MultimediaEntity entity){
+    /*    @Override
+    public List<Women> findByCategoryNames(List<String> categoryNames) {
+        List<WomenEntity> entities = womenJpaRepository.findByCategoryFilters_NameIn(categoryNames);
+        return entities.stream()
+                .map(womenCategoryFilterMapper::toDomain)
+                .collect(Collectors.toList());
+    }
+*/
+    public Multimedia toDomain(MultimediaEntity entity){
         return Multimedia.builder()
                 .idMedia(entity.getIdMedia())
                 .mediaType(entity.getMediaType())
@@ -37,7 +47,7 @@ public class MultimediaRepositoryAdapter implements MultimediaRepositoryPort {
                 .women(womenCategoryFilterMapper.toDomain(entity.getWomen()))
                 .build();
     }
-    private MultimediaEntity toEntity(Multimedia multimedia){
+    public MultimediaEntity toEntity(Multimedia multimedia){
         return MultimediaEntity.builder()
                 .idMedia(multimedia.getIdMedia())
                 .mediaType(multimedia.getMediaType())
@@ -47,5 +57,6 @@ public class MultimediaRepositoryAdapter implements MultimediaRepositoryPort {
     }
 
 
+
+
 }
-*/

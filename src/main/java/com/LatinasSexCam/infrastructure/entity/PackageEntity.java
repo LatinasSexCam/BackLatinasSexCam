@@ -3,6 +3,8 @@ package com.LatinasSexCam.infrastructure.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -20,5 +22,7 @@ public class PackageEntity {
 
     private double price;
     private String description;
+    @OneToMany(mappedBy = "packageS")
+    private Set<WomenEntity> women;
 
 }

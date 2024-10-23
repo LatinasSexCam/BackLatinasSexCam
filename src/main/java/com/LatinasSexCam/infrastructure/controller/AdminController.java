@@ -25,9 +25,10 @@ public class AdminController {
     public ResponseEntity<String> updateInfoWomenAdmin(@RequestBody RegisterWomenAdminRequest request){
         return adminService.updateInfoWomenAdmin(request);
     }
-    @DeleteMapping("deleteWomen")
+    @DeleteMapping("deleteWomen/{username}")
     @CrossOrigin(origins = "*")
-    public ResponseEntity<String> deleteWomenAdmin(@RequestBody RegisterWomenAdminRequest username){
+    public ResponseEntity<String> deleteWomenAdmin(@PathVariable String username){
+        System.out.println(username);
         return adminService.deleteWomen(username);
     }
 }

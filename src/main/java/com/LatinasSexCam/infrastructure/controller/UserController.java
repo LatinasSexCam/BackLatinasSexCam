@@ -58,7 +58,7 @@ public class UserController {
         return categoryFilterService.getAllFiltersWithCount();
     }
 
-    @GetMapping("/info")
+    @PostMapping("/info")
     @CrossOrigin(origins = "*")
     public ResponseEntity<UserInfoResponseDTO> getInfoUser(@RequestBody LoginRequest email){
         UserInfoResponseDTO users = userService.getUsers(email);

@@ -43,10 +43,8 @@ public class WomenEntity {
     @Enumerated(EnumType.STRING)
     private WomenStatus status;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "women", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonBackReference
-    private List<MultimediaEntity> mediaList = new ArrayList<>();
+    @OneToMany(mappedBy = "women")
+    private Set<MultimediaEntity> media;
 
 
     @ManyToOne

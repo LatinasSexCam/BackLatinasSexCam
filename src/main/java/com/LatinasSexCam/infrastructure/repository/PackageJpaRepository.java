@@ -10,7 +10,4 @@ import java.util.Optional;
 @Repository
 public interface PackageJpaRepository extends JpaRepository<PackageEntity, Long> {
 
-    List<PackageEntity> findAll();
-    Optional<PackageEntity> findById(long id);
-
 }

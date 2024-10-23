@@ -50,6 +50,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .gender(entity.getGender())
                 .phoneNumber(entity.getPhoneNumber())
                 .status(entity.getStatus())
+                .profilePhoto(entity.getProfilePhoto())
                 .role(roleRepositoryAdapter.toDomain(entity.getRole()))
                 .build();
     }
@@ -63,6 +64,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .gender(user.getGender())
                 .phoneNumber(user.getPhoneNumber())
                 .status(user.getStatus())
+                .profilePhoto(user.getProfilePhoto())
                 .role(roleRepositoryAdapter.toEntity(user.getRole()))
                 .build();
     }

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,7 @@ public class PackageRepositoryAdapter implements PackageRepositoryPort {
     @Override
     public List<Package> findAll() {
         return packageJpaRepository.findAll().stream()
+                .filter(Objects::nonNull)
                 .map(this::toDomain)
                 .collect(Collectors.toList());
     }
@@ -27,10 +29,13 @@ public class PackageRepositoryAdapter implements PackageRepositoryPort {
     public Package findById(long id) {
         return packageJpaRepository.findById(id)
                 .map(this::toDomain)
-                .orElse(null);
+                .orElseThrow(() -> new RuntimeException("Package with Id " +id + "not found"));
     }
 
     public Package toDomain(PackageEntity entity){
+        if (entity == null){
+            return null;
+        }
         return Package.builder()
                 .idPackage(entity.getIdPackage())
                 .name(entity.getName())

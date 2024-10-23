@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -32,7 +33,7 @@ public class Women {
     private int piercings;
     private int tattoos;
     private WomenStatus status;
-    private List<Multimedia> mediaList;
+    private Set<Multimedia> media;
     private User user;
     private Set<Services> services;
     private Set<CategoryFilter> categoryFilters;

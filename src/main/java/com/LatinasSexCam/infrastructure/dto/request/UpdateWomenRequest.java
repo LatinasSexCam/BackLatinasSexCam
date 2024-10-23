@@ -26,5 +26,6 @@ public class UpdateWomenRequest {
     private int tattoos;
     private double weight;
     private List<Long> selectedServiceIds;
-    private List<MultimediaRequest> multimedia = new ArrayList<>();
+    private List<String> selectedFilterNames;
+    private String photoProfile;
 }

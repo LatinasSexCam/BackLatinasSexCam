@@ -33,4 +33,5 @@ public class RegisterWomenAdminRequest {
     private double weight;
     private List<Long> selectedServiceIds;
     private List<String> selectedFilterNames;
+
 }

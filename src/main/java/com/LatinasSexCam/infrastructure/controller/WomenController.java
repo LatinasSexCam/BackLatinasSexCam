@@ -1,9 +1,13 @@
 package com.LatinasSexCam.infrastructure.controller;
 
+import com.LatinasSexCam.application.service.MultimediaService;
+import com.LatinasSexCam.domain.model.Multimedia;
 import com.LatinasSexCam.domain.model.Women;
+import com.LatinasSexCam.infrastructure.dto.request.MultimediaRequest;
 import com.LatinasSexCam.infrastructure.dto.request.RegisterRequest;
 import com.LatinasSexCam.infrastructure.dto.request.RegisterWomenRequest;
 import com.LatinasSexCam.infrastructure.dto.request.UpdateWomenRequest;
+import com.LatinasSexCam.infrastructure.dto.response.MultimediaResponseDTO;
 import com.LatinasSexCam.infrastructure.dto.response.WomenInfoResponseDTO;
 import com.LatinasSexCam.infrastructure.dto.response.WomensResponseDTO;
 import com.LatinasSexCam.infrastructure.entity.WomenEntity;
@@ -24,6 +28,7 @@ public class WomenController {
 
     private final WomenJpaRepository womenJpaRepository;
     private final WomenService womenService;
+    private final MultimediaService multimediaService;
 
     @PostMapping("register")
     public ResponseEntity<String> registerWomen(@RequestBody RegisterWomenRequest request){
@@ -52,7 +57,7 @@ public class WomenController {
         return ResponseEntity.ok(womens);
     }
 
-    @GetMapping("/info")
+    @PostMapping("/info")
     @CrossOrigin(origins = "*")
     public ResponseEntity<WomenInfoResponseDTO> getInfoWomen(@RequestBody RegisterRequest userName){
         WomenInfoResponseDTO womens = womenService.getWomesInfo(userName);
@@ -62,5 +67,18 @@ public class WomenController {
         return ResponseEntity.ok(womens);
     }
 
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadMultimedia(@RequestBody MultimediaRequest request){
+        return multimediaService.UploadImage(request);
+    }
+
+    @PostMapping("multimedia")
+    public ResponseEntity<List<MultimediaResponseDTO>> getMultimedia(@RequestBody RegisterRequest username){
+        List<MultimediaResponseDTO> multi = multimediaService.getMultimedia(username.getUser_name());
+        if (multi == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(multi);
+    }
 
 }

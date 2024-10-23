@@ -1,6 +1,7 @@
 package com.LatinasSexCam.infrastructure.dto.response;
 
 import com.LatinasSexCam.domain.model.CategoryFilter;
+import com.LatinasSexCam.domain.model.Multimedia;
 import com.LatinasSexCam.domain.model.Services;
 import com.LatinasSexCam.domain.model.Women;
 import lombok.*;
@@ -36,6 +37,7 @@ public class WomenInfoResponseDTO {
     private int tattoos;
     private List<ServicesResponseDTO> services;
     private List<CategoryFilter> categoryFilters;
+    private String user_name;
 
 
     public WomenInfoResponseDTO(Women women){
@@ -59,5 +61,6 @@ public class WomenInfoResponseDTO {
         this.tattoos = women.getTattoos();
         this.services = women.getServices().stream().map(ServicesResponseDTO::new).collect(Collectors.toList());
         this.categoryFilters = new ArrayList<>(women.getCategoryFilters());
+        this.user_name = (women.getUser() != null) ? women.getUser().getUserName(): "Not found";
     }
 }

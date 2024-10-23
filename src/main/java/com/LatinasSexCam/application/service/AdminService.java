@@ -114,15 +114,22 @@ public class AdminService {
             women.setPiercings(request.getPiercings());
             women.setShaving(request.getShaving());
             women.setShoeSize(request.getShoeSize());
+            women.setName(request.getName());
             women.setSmoker(request.getSmoker());
             women.setTattoos(request.getTattoos());
             women.setWeight(request.getWeight());
-
             if (request.getSelectedServiceIds() != null && !request.getSelectedServiceIds().isEmpty()) {
                 List<Services> selectServices = serviceRepositoryPort.findByIdServiceIn(request.getSelectedServiceIds());
                 women.setServices(new HashSet<>(selectServices));
             }
-
+            if (request.getSelectedFilterNames() != null && !request.getSelectedFilterNames().isEmpty()) {
+                List<CategoryFilter> selectFilter = categoryFilterRepositoryPort.findByNameIn(request.getSelectedFilterNames());
+                women.setCategoryFilters(new HashSet<>(selectFilter));
+            }
+            if (request.getPhotoProfile() != null){
+                user.setProfilePhoto(request.getPhotoProfile());
+            }
+            userRepositoryPort.save(user);
             womenRepositoryPort.save(women);
 
             return new ResponseEntity<>("Datos actualizados correctamente", HttpStatus.OK);
@@ -132,8 +139,8 @@ public class AdminService {
         }
     }
 
-    public ResponseEntity<String> deleteWomen(RegisterWomenAdminRequest userName){
-        Optional<Women> womenExist = womenRepositoryPort.findByUser_UserName(userName.getUser_name());
+    public ResponseEntity<String> deleteWomen(String userName){
+        Optional<Women> womenExist = womenRepositoryPort.findByUser_UserName(userName);
         if (womenExist.isPresent()){
             womenRepositoryPort.delete(womenExist.get());
             return new ResponseEntity<>("Chica eliminada correctamente", HttpStatus.OK);

@@ -17,6 +17,7 @@ public class WomensResponseDTO {
     private String nationality;
     private int age;
     private String namePackage;
+    private String user_name;
 
     public WomensResponseDTO(Women women) {
         this.id = women.getIdWomen();
@@ -25,5 +26,6 @@ public class WomensResponseDTO {
         this.nationality = (women.getUser() != null) ? women.getUser().getNationality(): "Unknown";
         this.age = women.getAge();
         this.namePackage = (women.getPackageS() != null) ? women.getPackageS().getName(): "Package not found";
+        this.user_name = (women.getUser() != null) ? women.getUser().getUserName(): "Not found";
     }
 }

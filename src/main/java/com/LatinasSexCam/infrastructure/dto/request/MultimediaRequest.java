@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MultimediaRequest {
 
-    private String email;
+    private String user_name;
     private String url;
     private MultimediaType mediaType;
 }

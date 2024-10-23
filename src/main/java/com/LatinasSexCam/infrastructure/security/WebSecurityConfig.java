@@ -38,17 +38,17 @@ public class WebSecurityConfig {
                                 "LatinasSexCam/user/subServices/{serviceId}",
                                 "LatinasSexCam/women/filter",
                                 "LatinasSexCam/user/filters",
-                                "LatinasSexCam/service/filterService").permitAll()
-                        .requestMatchers("LatinasSexCam/newComment",
-                                "LatinasSexCam/editComment/{id}",
+                                "LatinasSexCam/admin/register",
+                                "LatinasSexCam/women/info",
+                                "LatinasSexCam/admin/updateInfo",
+                                "LatinasSexCam/newComment",
                                 "LatinasSexCam/deleteComment/{id}",
-                                "LatinasSexCam/women/update",
+                                "LatinasSexCam/admin/deleteWomen/{username}",
+                                "LatinasSexCam/service/filterService",
                                 "LatinasSexCam/user/info",
-                                "LatinasSexCam/women/info").authenticated()
-                        .requestMatchers(HttpMethod.POST, "LatinasSexCam/admin/register",
-                                "LatinasSexCam/admin/updateInfo").hasAuthority("admin")
-                        .requestMatchers(HttpMethod.DELETE, "LatinasSexCam/admin/{id}",
-                                "LatinasSexCam/admin/deleteWomen").hasAuthority("admin")
+                                "LatinasSexCam/editComment/{id}",
+                                "LatinasSexCam/women/update",
+                                "LatinasSexCam/admin/{id}").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(sessionM -> sessionM.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)

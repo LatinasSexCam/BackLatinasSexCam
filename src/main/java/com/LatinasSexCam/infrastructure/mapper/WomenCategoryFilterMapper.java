@@ -46,7 +46,7 @@ public class WomenCategoryFilterMapper {
                 .categoryFilters(toDomain(entity.getCategoryFilters()))
                 .services(serviceRepositoryAdapter.toDomain(entity.getServices()))
                 .user(userRepositoryAdapter.toDomain(entity.getUser()))
-                .packageS(packageRepositoryAdapter.toDomain(entity.getPackageS()))
+                .packageS(entity.getPackageS() != null ? packageRepositoryAdapter.toDomain(entity.getPackageS()):null)
                 .build();
     }
 
