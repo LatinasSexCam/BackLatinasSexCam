@@ -54,7 +54,9 @@ public class WebSecurityConfig {
                                 "LatinasSexCam/user/info",
                                 "LatinasSexCam/editComment/{id}",
                                 "LatinasSexCam/women/update",
-                                "LatinasSexCam/admin/{id}").permitAll()
+                                "LatinasSexCam/admin/{id}",
+                                "LatinasSexCam/women/upload",
+                                "LatinasSexCam/women/multimedia/{username}").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(sessionM -> sessionM.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)

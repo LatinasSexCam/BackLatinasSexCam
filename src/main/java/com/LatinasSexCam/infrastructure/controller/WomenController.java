@@ -72,9 +72,9 @@ public class WomenController {
         return multimediaService.UploadImage(request);
     }
 
-    @PostMapping("multimedia")
-    public ResponseEntity<List<MultimediaResponseDTO>> getMultimedia(@RequestBody RegisterRequest username){
-        List<MultimediaResponseDTO> multi = multimediaService.getMultimedia(username.getUser_name());
+    @GetMapping("multimedia/{username}")
+    public ResponseEntity<List<MultimediaResponseDTO>> getMultimedia(@PathVariable String username){
+        List<MultimediaResponseDTO> multi = multimediaService.getMultimedia(username);
         if (multi == null){
             return ResponseEntity.notFound().build();
         }
