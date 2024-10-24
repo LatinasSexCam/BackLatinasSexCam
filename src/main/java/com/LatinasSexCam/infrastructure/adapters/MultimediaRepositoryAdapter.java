@@ -1,6 +1,7 @@
 package com.LatinasSexCam.infrastructure.adapters;
 
 import com.LatinasSexCam.domain.model.Multimedia;
+import com.LatinasSexCam.domain.model.Women;
 import com.LatinasSexCam.domain.ports.MultimediaRepositoryPort;
 import com.LatinasSexCam.infrastructure.entity.MultimediaEntity;
 import com.LatinasSexCam.infrastructure.mapper.WomenCategoryFilterMapper;
@@ -18,7 +19,7 @@ public class MultimediaRepositoryAdapter implements MultimediaRepositoryPort {
     private final MultimediaJpaRepository multimediaJpaRepository;
     private final WomenCategoryFilterMapper womenCategoryFilterMapper;
 
-    @Override
+
     public void save(Multimedia multimedia) {
         multimediaJpaRepository.save(toEntity(multimedia));
     }
@@ -31,14 +32,14 @@ public class MultimediaRepositoryAdapter implements MultimediaRepositoryPort {
                 .collect(Collectors.toList());
     }
 
-    /*    @Override
-    public List<Women> findByCategoryNames(List<String> categoryNames) {
-        List<WomenEntity> entities = womenJpaRepository.findByCategoryFilters_NameIn(categoryNames);
-        return entities.stream()
-                .map(womenCategoryFilterMapper::toDomain)
+    @Override
+    public void deleteAll(List<Multimedia> multimedia) {
+        List<MultimediaEntity> entities = multimedia.stream()
+                .map(this::toEntity)
                 .collect(Collectors.toList());
+        multimediaJpaRepository.deleteAll(entities);
     }
-*/
+
     public Multimedia toDomain(MultimediaEntity entity){
         return Multimedia.builder()
                 .idMedia(entity.getIdMedia())

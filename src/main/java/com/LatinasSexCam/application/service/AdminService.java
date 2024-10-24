@@ -25,6 +25,7 @@ public class AdminService {
     private final PackageRepositoryPort packageRepositoryPort;
     private final ServiceRepositoryPort serviceRepositoryPort;
     private final CategoryFilterRepositoryPort categoryFilterRepositoryPort;
+    private final MultimediaRepositoryPort multimediaRepositoryPort;
 
     public ResponseEntity<String> registerWomenByAdmin(@Valid RegisterWomenAdminRequest request) {
         String responseMessage;
@@ -142,7 +143,13 @@ public class AdminService {
     public ResponseEntity<String> deleteWomen(String userName){
         Optional<Women> womenExist = womenRepositoryPort.findByUser_UserName(userName);
         if (womenExist.isPresent()){
-            womenRepositoryPort.delete(womenExist.get());
+            Women women = womenExist.get();
+
+            List<Multimedia> multimedia = multimediaRepositoryPort.findByWomen_User_UserName(userName);
+            if (!multimedia.isEmpty()){
+                multimediaRepositoryPort.deleteAll(multimedia);
+            }
+            womenRepositoryPort.delete(women);
             return new ResponseEntity<>("Chica eliminada correctamente", HttpStatus.OK);
         }
         return new ResponseEntity<>("Chica no encontrado", HttpStatus.NOT_FOUND);
