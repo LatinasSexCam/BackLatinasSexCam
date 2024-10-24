@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("LatinasSexCam/service")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+/*@CrossOrigin(origins = "*")*/
 public class ServiceController {
     private final ServicesService servicesService;
 

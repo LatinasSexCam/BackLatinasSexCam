@@ -1,4 +1,3 @@
-/*
 package com.LatinasSexCam.infrastructure.security;
 
 import com.LatinasSexCam.domain.ports.UserRepositoryPort;
@@ -17,8 +16,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CustomDetailsService implements UserDetailsService {
 
-*/
-/*    @Autowired
+    @Autowired
     private UserRepositoryPort userRepositoryPort;
 
     @Override
@@ -31,7 +29,6 @@ public class CustomDetailsService implements UserDetailsService {
         throw new UsernameNotFoundException("Usuario no encontrado con email: " + email);
     }
 
-    private User findUserByEmail(String email){return userRepositoryPort.findByEmail(email);}*//*
+    private User findUserByEmail(String email){return userRepositoryPort.findByEmail(email);}
 
 }
-*/

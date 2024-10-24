@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("LatinasSexCam/women")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+/*@CrossOrigin(origins = "*")*/
 public class WomenController {
 
     private final WomenJpaRepository womenJpaRepository;
@@ -36,7 +36,7 @@ public class WomenController {
     }
 
     @PostMapping("/update")
-    @CrossOrigin(origins = "*")
+/*    @CrossOrigin(origins = "*")*/
     public ResponseEntity<String> updateWomenDetails(@Valid @RequestBody UpdateWomenRequest request) {
         return womenService.updateInfoWomen(request);
     }
@@ -58,7 +58,7 @@ public class WomenController {
     }
 
     @PostMapping("/info")
-    @CrossOrigin(origins = "*")
+/*    @CrossOrigin(origins = "*")*/
     public ResponseEntity<WomenInfoResponseDTO> getInfoWomen(@RequestBody RegisterRequest userName){
         WomenInfoResponseDTO womens = womenService.getWomesInfo(userName);
         if (womens == null){

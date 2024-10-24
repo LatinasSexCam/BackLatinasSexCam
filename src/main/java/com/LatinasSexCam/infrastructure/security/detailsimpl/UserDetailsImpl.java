@@ -1,4 +1,3 @@
-/*
 package com.LatinasSexCam.infrastructure.security.detailsimpl;
 
 
@@ -67,4 +66,3 @@ public class UserDetailsImpl implements UsersDetails {
 
 
 
-*/

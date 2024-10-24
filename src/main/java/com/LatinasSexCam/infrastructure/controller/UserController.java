@@ -22,7 +22,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("LatinasSexCam/user")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+/*@CrossOrigin(origins = "*")*/
 public class UserController {
 
     private final UserService userService;
@@ -59,7 +59,7 @@ public class UserController {
     }
 
     @PostMapping("/info")
-    @CrossOrigin(origins = "*")
+ /*   @CrossOrigin(origins = "*")*/
     public ResponseEntity<UserInfoResponseDTO> getInfoUser(@RequestBody LoginRequest email){
         UserInfoResponseDTO users = userService.getUsers(email);
         if (users == null) {

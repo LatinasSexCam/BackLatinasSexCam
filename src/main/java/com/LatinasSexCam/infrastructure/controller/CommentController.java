@@ -17,14 +17,14 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("LatinasSexCam")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+/*@CrossOrigin(origins = "*")*/
 public class CommentController {
 
     private final CommentService commentService;
     private final CommentJpaRepository commentJpaRepository;
 
     @PostMapping(value = "newComment")
-    @CrossOrigin(origins = "*")
+/*    @CrossOrigin(origins = "*")*/
     public ResponseEntity<String> saveComment(@RequestBody CommentRequest request) {
         Comment comment = commentService.saveComment(request);
         String responseMessage;
@@ -48,7 +48,7 @@ public class CommentController {
     }
 
     @PutMapping("/editComment/{id}")
-    @CrossOrigin(origins = "*")
+/*    @CrossOrigin(origins = "*")*/
     public ResponseEntity<String> editComment(@PathVariable Long id, @RequestBody CommentRequest request) {
         String responseMessage;
         HttpStatus status;
@@ -71,7 +71,7 @@ public class CommentController {
         return new ResponseEntity<>(responseMessage, status);
     }
     @DeleteMapping("/deleteComment/{id}")
-    @CrossOrigin(origins = "*")
+/*    @CrossOrigin(origins = "*")*/
     public ResponseEntity<String> deleteComment(@PathVariable Long id, @RequestBody CommentRequest email) {
         String responseMessage;
         HttpStatus status;
@@ -90,7 +90,7 @@ public class CommentController {
     }
 
     @DeleteMapping("/admin/{id}")
-    @CrossOrigin(origins = "*")
+ /*   @CrossOrigin(origins = "*")*/
     public ResponseEntity<String> deleteCommentByAdmin(@PathVariable Long id){
         return commentService.deleteCommentByAdmin(id);
     }

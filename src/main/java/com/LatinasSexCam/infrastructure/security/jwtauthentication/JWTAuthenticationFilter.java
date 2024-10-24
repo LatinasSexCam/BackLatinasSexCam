@@ -1,4 +1,3 @@
-/*
 package com.LatinasSexCam.infrastructure.security.jwtauthentication;
 
 import com.LatinasSexCam.infrastructure.exceptions.CustomAuthenticationException;
@@ -56,4 +55,3 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     }
 }
-*/

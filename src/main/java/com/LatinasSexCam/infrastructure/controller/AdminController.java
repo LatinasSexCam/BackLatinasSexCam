@@ -9,24 +9,24 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("LatinasSexCam/admin")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+/*@CrossOrigin(origins = "*")*/
 public class AdminController {
 
     private final AdminService adminService;
 
     @PostMapping("register")
-    @CrossOrigin(origins = "*")
+/*    @CrossOrigin(origins = "*")*/
     public ResponseEntity<String> registerWomenAdmin(@RequestBody RegisterWomenAdminRequest request){
         return adminService.registerWomenByAdmin(request);
     }
 
     @PostMapping("updateInfo")
-    @CrossOrigin(origins = "*")
+/*    @CrossOrigin(origins = "*")*/
     public ResponseEntity<String> updateInfoWomenAdmin(@RequestBody RegisterWomenAdminRequest request){
         return adminService.updateInfoWomenAdmin(request);
     }
     @DeleteMapping("deleteWomen/{username}")
-    @CrossOrigin(origins = "*")
+/*    @CrossOrigin(origins = "*")*/
     public ResponseEntity<String> deleteWomenAdmin(@PathVariable String username){
         System.out.println(username);
         return adminService.deleteWomen(username);
