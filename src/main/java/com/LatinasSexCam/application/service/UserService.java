@@ -14,19 +14,15 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+/*import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;*/
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+/*    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();*/
     private final UserRepositoryPort userRepositoryPort;
     private final TokenUtils tokenUtils;
     private final RoleRepositoryPort roleRepositoryPort;
@@ -51,7 +47,7 @@ public class UserService {
                 User user = User.builder()
                         .userName(request.getUser_name())
                         .email(request.getEmail())
-                        .password(passwordEncoder.encode(request.getPassword()))
+                        .password(/*passwordEncoder.encode*/(request.getPassword()))
                         .nationality(request.getNacionality())
                         .gender(request.getGender())
                         .phoneNumber(request.getPhoneNumber())
@@ -79,12 +75,12 @@ public class UserService {
     public TokenResponse loginUser(LoginRequest request){
         User user = userRepositoryPort.findByEmail(request.getEmail());
 
-        if (user == null || !passwordEncoder.matches(request.getPassword(), user.getPassword())){
+/*        if (user == null || !passwordEncoder.matches(request.getPassword(), user.getPassword())){
             return null;
-        }
-        String token = tokenUtils.getTokenUser(user);
+        }*/
+/*        String token = tokenUtils.getTokenUser(user);*/
         return TokenResponse.builder()
-                .token(token)
+/*                .token(token)*/
                 .build();
     }
 

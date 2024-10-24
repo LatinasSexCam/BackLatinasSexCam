@@ -12,7 +12,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
+/*import org.springframework.security.crypto.password.PasswordEncoder;*/
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class WomenService {
     private final WomenRepositoryPort womenRepositoryPort;
     private final RoleRepositoryPort roleRepositoryPort;
-    private final PasswordEncoder passwordEncoder;
+/*    private final PasswordEncoder passwordEncoder;*/
     private final UserRepositoryPort userRepositoryPort;
     private final PackageRepositoryPort packageRepositoryPort;
     private final ServiceRepositoryPort serviceRepositoryPort;
@@ -49,7 +49,7 @@ public class WomenService {
                         .userName(request.getUserName())
                         .email(request.getEmail())
                         .phoneNumber(request.getPhoneNumber())
-                        .password(passwordEncoder.encode(request.getPassword()))
+                        .password(/*passwordEncoder.encode*/(request.getPassword()))
                         .role(roleUser)
                         .status(UserStatus.ACTIVE)
                         .nationality(request.getNationality())
