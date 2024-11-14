@@ -47,7 +47,7 @@ public class UserService {
                 User user = User.builder()
                         .userName(request.getUser_name())
                         .email(request.getEmail())
-                        .password(/*passwordEncoder.encode*/(request.getPassword()))
+                        .password(passwordEncoder.encode(request.getPassword()))
                         .nationality(request.getNacionality())
                         .gender(request.getGender())
                         .phoneNumber(request.getPhoneNumber())
@@ -79,6 +79,7 @@ public class UserService {
             return null;
         }
         String token = tokenUtils.getTokenUser(user);
+        System.out.println("Token generado: " + token);
         return TokenResponse.builder()
                 .token(token)
                 .build();
